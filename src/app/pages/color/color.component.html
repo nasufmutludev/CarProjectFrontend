@@ -1,0 +1,49 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">  
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">Color List</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ColorId</th>
+                <th scope="col">ColorName</th>                
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let color of colors">
+                <th scope="row">
+                  <div class="media align-items-center">                    
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{color.colorId}}</span>
+                    </div>
+                  </div>
+                </th>
+                <th scope="row">
+                  <div class="media align-items-center">                   
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{color.colorName}}</span>
+                    </div>
+                  </div>
+                </th>               
+                <td class="text-right">
+                  <button type="button" class="btn btn-primary btn-sm">Düzenle</button>
+                  <button type="button" class="btn btn-danger btn-sm">Sil</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

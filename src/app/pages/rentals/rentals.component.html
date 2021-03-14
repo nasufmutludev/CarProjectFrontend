@@ -1,0 +1,67 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">Rentals List</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">RentalId</th>
+                <th scope="col">BrandName</th>
+                <th scope="col">FirstName & LastName</th>
+                <th scope="col">RentDate</th>
+                <th scope="col">ReturnDate</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rental of rentals">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{ rental.rentalId }}</span>
+                    </div>
+                  </div>
+                </th>
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{ rental.brandName }}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>{{ rental.firstName +" "+ rental.lastName }}</td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    {{ rental.rentDate }}
+                  </span>
+                </td>
+                <td>
+                  {{ rental.returnDate }}
+                </td>
+                
+                <td class="text-right">
+                  <button type="button" class="btn btn-info btn-sm">
+                    Detay
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm">
+                    Düzenle
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm">
+                    Sil
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
