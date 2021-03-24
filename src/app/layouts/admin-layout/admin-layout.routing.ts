@@ -11,11 +11,12 @@ import { CustomerComponent } from "src/app/pages/customer/customer.component";
 import { RentalsComponent } from "src/app/pages/rentals/rentals.component";
 
 
-export const AdminLayoutRoutes: Routes = [
+export const AdminLayoutRoutes: Routes = [  
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
   { path: "car", component: CarComponent },
   { path: "brand", component: BrandComponent },
+  { path: "car/brand/:brandId", component: CarComponent },
   { path: "color", component: ColorComponent },
   { path: "customer", component: CustomerComponent },
   { path: "rentals", component: RentalsComponent },

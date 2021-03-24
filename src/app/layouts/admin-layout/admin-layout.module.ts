@@ -27,7 +27,8 @@ import { RentalsComponent } from 'src/app/pages/rentals/rentals.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,
