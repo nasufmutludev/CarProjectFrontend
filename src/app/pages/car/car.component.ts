@@ -14,48 +14,56 @@ import { ColorService } from "src/app/services/color.service";
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
-  brands:Brand[]=[];
-  colors:Color[]=[];
-  currentColor:Color;
+  brands: Brand[] = [];
+  colors: Color[] = [];
+  currentColor: Color;
   currentBrand: Brand;
   dataLoad = false;
 
-  constructor(    
-    private activatedRoute:ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private carService: CarService,
-    private brandService:BrandService,
-    private colorService:ColorService   
+    private brandService: BrandService,
+    private colorService: ColorService
   ) {}
 
-  ngOnInit():void {
-    this.activatedRoute.params.subscribe(params=>{  
-      if (params["brandId"]) {
-        this.getCarsByCategory(params["brandId"]);         
-        this.getBrands();       
-        this.getColors();
-      }else if(params["colorId"]){
+  ngOnInit(): void {
+    this.getColors();
+    this.getBrands();
+    this.activatedRoute.params.subscribe((params) => {
+      if (params["brandId"] && params["colorId"]) {
+        this.getCarsByCategory(params["brandId"], params["colorId"]);
+      } else if (params["colorId"]) {
         this.getColorByCategory(params["colorId"]);
-        this.getColors();
-        this.getBrands();   
-      } else{
-        this.getColors();
-        this.getBrands();   
-        this.getCars();     
+      } else if(params["brandId"]){
+        this.getBrandByCategory(params["brandId"])
+      }else {
+        this.getCars();
       }
-    })    
+    });
   }
-  getCarsByCategory(brandId: number) {
-    this.carService.getCarsByCategory(brandId).subscribe(response=>{
-      this.cars=response.data;
-      this.dataLoad=true;
-    })
+
+  getBrandByCategory(brandId: number) {
+    this.carService.getColorByCategory(brandId).subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoad = true;
+    });
+  }
+
+  getCarsByCategory(brandId: number, colorId: number) {
+    this.carService
+      .getCarsByCategory(brandId, colorId)
+      .subscribe((response) => {
+        this.cars = response.data;
+        this.dataLoad = true;
+      });
   }
 
   getColorByCategory(colorId: number) {
-    this.carService.getColorByCategory(colorId).subscribe(response=>{
-      this.cars=response.data;
-      this.dataLoad=true;
-    })
+    this.carService.getColorByCategory(colorId).subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoad = true;
+    });
   }
 
   getCars() {
@@ -80,11 +88,11 @@ export class CarComponent implements OnInit {
   }
 
   setCurrentBrand(brand: Brand) {
-    this.currentBrand = brand;  
+    this.currentBrand = brand;
   }
 
-  setCurrentColor(color:Color) {        
-    this.currentColor=color;
+  setCurrentColor(color: Color) {
+    this.currentColor = color;
   }
 
   getCurrentBrandClass(brand: Brand) {
