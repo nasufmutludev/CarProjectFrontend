@@ -17,6 +17,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "car", component: CarComponent },
   { path: "brand", component: BrandComponent },
   { path: "car/brand/:brandId", component: CarComponent },
+  { path: "car/color/:colorId", component: CarComponent },
   { path: "color", component: ColorComponent },
   { path: "customer", component: CustomerComponent },
   { path: "rentals", component: RentalsComponent },

@@ -76,10 +76,9 @@
     </div>
     <div class="col-md-4">
       <ul class="list-group">
-        <li [class]="getAllBrandClass()" routerLink="/car">Tüm Araçlar</li>
-        <li
-          *ngFor="let brand of brands"
-          [class]="getCurrentBrandClass(brand)"
+        <li class="list-group-item" routerLink="/car">Tüm Araçlar</li>
+        <li class="list-group-item"
+          *ngFor="let brand of brands"          
           routerLink="/car/brand/{{ brand.brandId }}"
           (click)="setCurrentBrand(brand)"
         >
@@ -92,11 +91,7 @@
   <div class="mt-3">
     <div class="col-md-2">
       <ul class="list-group">
-        <li class="list-group-item">An active item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li class="list-group-item" *ngFor="let color of colors" (click)="setCurrentColor(color)" routerLink="/car/color/{{ color.colorId }}">{{color.colorName}}</li>       
       </ul>
     </div>
   </div>
