@@ -16,6 +16,7 @@ import { BrandComponent } from 'src/app/pages/brand/brand.component';
 import { ColorComponent } from 'src/app/pages/color/color.component';
 import { CustomerComponent } from 'src/app/pages/customer/customer.component';
 import { RentalsComponent } from 'src/app/pages/rentals/rentals.component';
+import { CarImageComponent } from 'src/app/pages/car-image/car-image.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -36,6 +37,7 @@ import { RentalsComponent } from 'src/app/pages/rentals/rentals.component';
     CarComponent,
     BrandComponent,   
     ColorComponent,
+    CarImageComponent,
     RentalsComponent,
     CustomerComponent, 
     IconsComponent,

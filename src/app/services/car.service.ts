@@ -2,14 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Car } from "../models/car";
-import { Color } from "../models/color";
 import { ListResponseModel } from "../models/listResponseModel";
+import { ObjectResponseModel } from "../models/objectResponseModel";
 
 @Injectable({
   providedIn: "root",
 })
 export class CarService {
-  
   apiUrl = "https://localhost:44329/api/";
   constructor(private httpClient: HttpClient) {}
 
@@ -18,14 +17,27 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  getCarsByCategory(brandId:number,colorId):Observable<ListResponseModel<Car>>{
-    let newPath=this.apiUrl+"car/getbrandid?brandId="+brandId+"&colorId="+colorId;
+  getCarsByCategory(
+    brandId: number,
+    colorId:number
+  ): Observable<ListResponseModel<Car>> {
+    let newPath =
+      this.apiUrl + "car/getbrandid?brandId=" + brandId + "&colorId=" + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  getColorByCategory(colorId:number):Observable<ListResponseModel<Car>>{
-    let newPath=this.apiUrl+"car/getcolorid?colorid="+colorId;
+  getColorByCategory(colorId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + "car/getcolorid?colorid=" + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
-  
+
+  getCarDetailsByCarId(carId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + "car/getbyid?carId=" + carId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+
+  getCarDetailCarId(carId: number): Observable<ObjectResponseModel<Car>> {
+    let newPath = this.apiUrl + "car/getbycarid?carId=" + carId;
+    return this.httpClient.get<ObjectResponseModel<Car>>(newPath);
+  }
 }
