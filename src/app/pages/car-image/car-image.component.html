@@ -5,7 +5,7 @@
   <div class="row mt-5">
     <div class="col-md-8">
         <!------------------------------------------------->
-        <div class="card" *ngFor="let img of carImages let i = first" style="width: 70rem;" [class.active]="i">
+        <div class="card" *ngFor="let img of carImages"style="width: 70rem;">
             <img src="{{path}}{{ img.imagePath }}" class="d-block w-100"/>
             
             <div class="card-body">

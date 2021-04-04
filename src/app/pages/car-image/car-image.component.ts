@@ -11,7 +11,7 @@ import { CarService } from "src/app/services/car.service";
   styleUrls: ["./car-image.component.css"],
 })
 export class CarImageComponent implements OnInit {
-  path="https://localhost:44329/Images/"
+  path: string = "https://localhost:44329/Images/";
   cars: Car;
   carImages: CarImage[];
 
@@ -39,5 +39,4 @@ export class CarImageComponent implements OnInit {
       .getImageByCarId(carId)
       .subscribe((response) => (this.carImages = response.data));
   }
-  
- }
+}
