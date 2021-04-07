@@ -17,6 +17,11 @@ import { ColorComponent } from 'src/app/pages/color/color.component';
 import { CustomerComponent } from 'src/app/pages/customer/customer.component';
 import { RentalsComponent } from 'src/app/pages/rentals/rentals.component';
 import { CarImageComponent } from 'src/app/pages/car-image/car-image.component';
+import { VatAddedPipe } from 'src/app/pipes/vat-added.pipe';
+import { FilterPipePipe } from 'src/app/pipes/filter-pipe.pipe';
+import { BrandFilterPipePipe } from 'src/app/pipes/brand-filter-pipe.pipe';
+import { ColorPipePipe } from 'src/app/pipes/color-pipe.pipe';
+import { FilterComponent } from 'src/app/pages/filter/filter.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -29,7 +34,7 @@ import { CarImageComponent } from 'src/app/pages/car-image/car-image.component';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,       
   ],
   declarations: [
     DashboardComponent,
@@ -41,7 +46,12 @@ import { CarImageComponent } from 'src/app/pages/car-image/car-image.component';
     RentalsComponent,
     CustomerComponent, 
     IconsComponent,
-    MapsComponent
+    VatAddedPipe,
+    FilterPipePipe,
+    BrandFilterPipePipe,
+    ColorPipePipe,    
+    MapsComponent,
+    FilterComponent
   ]
 })
 

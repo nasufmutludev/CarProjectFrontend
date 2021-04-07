@@ -6,7 +6,16 @@
   <!-- Dark table -->
   <div class="row mt-5">
     <div class="col">
-      <div class="card bg-default shadow">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+        </div>
+        <input class="form-control" placeholder="Arama ifadesi giriniz" type="text" [(ngModel)]="filterText" id="filterText">
+      </div>
+      <div>
+        {{filterText}} aradınız
+      </div>
+      <div class="card bg-default shadow mt-3">
         <div class="card-header bg-transparent border-0">
           <h3 class="text-white mb-0">Color List</h3>
         </div>
@@ -20,7 +29,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let color of colors">
+              <tr *ngFor="let color of colors | colorPipe:filterText">
                 <th scope="row">
                   <div class="media align-items-center">                    
                     <div class="media-body">

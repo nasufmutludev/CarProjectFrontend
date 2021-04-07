@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Brand } from "src/app/models/brand";
 import { Car } from "src/app/models/car";
 import { Color } from "src/app/models/color";
@@ -14,22 +14,27 @@ import { ColorService } from "src/app/services/color.service";
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
-  brands: Brand[] = [];
-  colors: Color[] = [];
+  brands: Brand[] = [];  
+  colors: Color[] = [];  
   currentColor: Color;
   currentBrand: Brand;
   dataLoad = false;
+  filterText="";
+  brandFilter:number;
+  colorFilter:number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
     private brandService: BrandService,
-    private colorService: ColorService
+    private colorService: ColorService,    
   ) {}
 
   ngOnInit(): void {
     this.getColors();
     this.getBrands();
+    
+
     this.activatedRoute.params.subscribe((params) => {
       if (params["brandId"] && params["colorId"]) {
         this.getCarsByCategory(params["brandId"], params["colorId"]);
@@ -61,7 +66,7 @@ export class CarComponent implements OnInit {
 
   getCarDetailByCarId(carId: number) {
     this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
-      this.cars = response.data;
+       this.cars = response.data;
     });
   }
 
@@ -116,4 +121,17 @@ export class CarComponent implements OnInit {
       return "list-group-item";
     }
   }
+
+  getSelectedBrand(brandId: number) {
+    if (this.brandFilter == brandId)
+      return true;
+    else
+      return false;
+  }
+  getSelectedColor(colorId: number) {
+    if (this.colorFilter == colorId)
+      return true;
+    else
+      return false;
+  }  
 }
